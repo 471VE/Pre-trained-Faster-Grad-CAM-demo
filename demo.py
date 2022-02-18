@@ -124,7 +124,7 @@ def main():
             cv2.putText(new_image, f"{hand}, score: {score:.1f}",(15, 80), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 1, cv2.LINE_AA)
             cv2.putText(new_image, message1, (15, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
             cv2.putText(new_image, message2, (15, 45), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
-
+            # display the image
             cv2.imshow("Result", new_image)
 
         # quit or change mode    
