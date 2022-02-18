@@ -86,6 +86,7 @@ def main():
         interpreter.set_num_threads(4)
     except:
         pass
+    
     interpreter.allocate_tensors()
     input_details = interpreter.get_input_details()
     output_details = interpreter.get_output_details()
