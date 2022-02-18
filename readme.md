@@ -1,6 +1,6 @@
 # Pre-trained Faster-Grad-CAM Demo
 
-This program takes images of hands as an input and displays whether these hands are open or closed.
+This program takes images of hands as an input and displays whether these hands are open or closed. You can add your own `.jpg` or `.png` images to the `hand_images` directory.
 
 ## Running the program
 
