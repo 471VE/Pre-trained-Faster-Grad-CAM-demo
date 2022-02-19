@@ -4,7 +4,9 @@ This program takes images of hands as an input and displays whether these hands 
 
 ## Running the program
 
-The following tutorial assumes that you have Python 3 installed.
+### Using virtualenv
+
+The following tutorial assumes that you have Python 3.7-3.9 installed since it is required by TensorFlow. Otherwise, skip this step and go to the next one.
 
 First, install <b>virtualenv</b> by running
 
@@ -18,7 +20,13 @@ Second, create a new virtual environment `demo_env` by running
     python -m venv demo_env
 ```
 
-and activate it:
+on Windows and
+
+```
+    python3 -m venv demo_env
+```
+
+on Linux. Next, activate it:
 
 ```
     demo_env\Scripts\activate
@@ -32,7 +40,21 @@ on Windows and
 
 on Linux.
 
-Third, install dependencies:
+### Using conda
+
+If you did the previous step, skip this one. This step assumes you have <b>Anaconda</b> or <b>Miniconda</b> installed.
+
+Create a new virtual environment and activate it by executing following commands:
+
+```
+    conda create -n demo_env python=3.9.6
+
+    conda activate demo_env
+```
+
+### Dependencies
+
+Last, install dependencies:
 
 ```
     pip install -r requirements.txt
@@ -43,3 +65,11 @@ You can finally run the script. Do it by running
 ```
     python demo.py
 ```
+
+on Windows and
+
+```
+    python3 demo.py
+```
+
+on Linux.
