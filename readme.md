@@ -2,6 +2,16 @@
 
 This program takes images of hands as an input and displays whether these hands are open or closed. You can add your own `.jpg` or `.png` images to the `hand_images` directory.
 
+## Downloading the code
+
+You can either download the archive by clicking <b>Code</b>-><b>Download ZIP</b> and extract it or clone this branch using git:
+
+```
+git clone --branch Week-1.1 https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git
+
+cd Pre-trained-Faster-Grad-CAM-demo
+```
+
 ## Running the program
 
 ### Using virtualenv
