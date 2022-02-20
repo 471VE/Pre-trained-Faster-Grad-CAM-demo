@@ -16,12 +16,18 @@ cd Pre-trained-Faster-Grad-CAM-demo
 
 ### Using virtualenv
 
-The following tutorial assumes that you have Python 3.7-3.9 installed since it is required by TensorFlow. Otherwise, skip this step and go to the next one.
+This section assumes that you have Python 3.7-3.9 installed since it is required by TensorFlow. Otherwise, skip this step and go to the next one.
 
 First, install <b>virtualenv</b> by running
 
 ```
     pip install virtualenv
+```
+
+If you have Debian/Ubuntu system, you will also have to install python3-venv by:
+
+```
+    sudo apt install python3.9-venv
 ```
 
 Second, create a new virtual environment `demo_env` by running
@@ -39,13 +45,13 @@ on Windows and
 on Linux. Next, activate it:
 
 ```
-    demo_env\Scripts\activate
+    demo_env/Scripts/activate
 ```
 
 on Windows and
 
 ```
-    demo_env\bin\activate
+    . demo_env/bin/activate
 ```
 
 on Linux.
