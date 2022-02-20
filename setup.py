@@ -6,7 +6,7 @@ import re
 
 def get_version():
     current_dir = osp.abspath(osp.dirname(__file__))
-    version_file = osp.join(current_dir, "src\\PreTrainedFasterGradCAMDemo\\__init__.py")
+    version_file = osp.join(current_dir, "src/PreTrainedFasterGradCAMDemo/__init__.py")
     with io.open(version_file, encoding="utf-8") as f:
         text = f.read()
     return re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", text, re.M).group(1)
@@ -30,7 +30,7 @@ def get_long_description():
 
 def get_data():
     current_dir = osp.abspath(osp.dirname(__file__))
-    data = glob(current_dir + "\\src\\PreTrainedFasterGradCAMDemo\\*\\*")
+    data = glob(current_dir + "/src/PreTrainedFasterGradCAMDemo/*/*")
     data = ['\\'.join(elem.split('\\')[-2:]) for elem in data]
     return data
 

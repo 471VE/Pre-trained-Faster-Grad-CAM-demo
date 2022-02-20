@@ -14,6 +14,12 @@ First, install <b>virtualenv</b> by running
     pip install virtualenv
 ```
 
+If you have Debian/Ubuntu system, you will also have to install python3-venv by:
+
+```
+    apt install python3.9-venv
+```
+
 Second, create a new virtual environment `demo_env` by running
 
 ```
@@ -29,13 +35,13 @@ on Windows and
 on Linux. Next, activate it:
 
 ```
-    demo_env\Scripts\activate
+    demo_env/Scripts/activate
 ```
 
 on Windows and
 
 ```
-    demo_env\bin\activate
+    . demo_env/bin/activate
 ```
 
 on Linux.
@@ -95,7 +101,7 @@ on Linux.
 All you have left to do is actually installing the package. Do it by running
 
 ```
-    pip install dist\PreTrainedFasterGradCAMDemo-0.1.2.tar.gz
+    pip install dist/PreTrainedFasterGradCAMDemo-0.1.2.tar.gz
 ```
 
 ## Installing the package directly from the repository
