@@ -1,3 +1,16 @@
+Metadata-Version: 2.1
+Name: PreTrainedFasterGradCAMDemo
+Version: 0.1.2
+Summary: Pre-trained Faster-Grad-CAM Demo
+Home-page: https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo
+Author: 471VE
+Author-email: zherebiatnikov.ivan@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.7,<3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 # Pre-trained Faster-Grad-CAM Demo
 
 This program takes images of hands as an input and displays whether these hands are open or closed.
@@ -70,9 +83,15 @@ Install `build` module:
     pip install build
 ```
 
+Last, install dependencies:
+
+```
+    pip install -r requirements.txt
+```
 
 You can finally run the script. Do it by running the following command:
 
 ```
     demo
 ```
+
