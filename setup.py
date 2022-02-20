@@ -48,5 +48,6 @@ setup(name="PreTrainedFasterGradCAMDemo",
       install_requires=get_dependencies(),
       python_requires=">=3.7,<3.10",
       entry_points={"console_scripts": ["demo=PreTrainedFasterGradCAMDemo.demo:main"]},
-      package_data={"PreTrainedFasterGradCAMDemo": get_data()})
+      package_data={"PreTrainedFasterGradCAMDemo": get_data()},
+      setup_requires=['wheel'])
 

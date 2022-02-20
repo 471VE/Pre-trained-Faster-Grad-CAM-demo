@@ -30,7 +30,7 @@ First, install <b>virtualenv</b> by running
 If you have Debian/Ubuntu system, you will also have to install python3-venv by:
 
 ```
-    apt install python3.9-venv
+    sudo apt install python3.9-venv
 ```
 
 Second, create a new virtual environment `demo_env` by running
