@@ -4,8 +4,9 @@ import numpy as np
 import joblib
 from tensorflow.lite.python.interpreter import Interpreter
 import glob
+import os.path as osp
 
-model_path = "model/" 
+model_path = osp.abspath(osp.dirname(__file__)) + '\\model\\'
 
 if os.path.exists(model_path):
     # load csv 
@@ -18,9 +19,9 @@ if os.path.exists(model_path):
 else:
     print("The path to the model weights does not exist.")
     
-path_to_images = "hand_images/"
+path_to_images = osp.abspath(osp.dirname(__file__)) + "\\hand_images\\"
 if os.path.exists(path_to_images):
-    image_names = glob.glob(f'{path_to_images}/*.jpg') + glob.glob(f'{path_to_images}/*.png')
+    image_names = glob.glob(f'{path_to_images}*.jpg') + glob.glob(f'{path_to_images}*.png')
 else:
     print("The path to the directory with the images of hands does not exist.")
 
