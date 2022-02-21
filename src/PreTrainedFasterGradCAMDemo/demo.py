@@ -89,7 +89,7 @@ def main():
     interpreter = Interpreter(model_path=model_path + "weights_weight_quant.tflite")
     try:
         interpreter.set_num_threads(4)
-    except Exception :
+    except Exception:
         pass
 
     interpreter.allocate_tensors()
