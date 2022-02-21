@@ -20,28 +20,28 @@ If you have Debian/Ubuntu system, you will also have to install python3-venv by:
     sudo apt install python3.9-venv
 ```
 
-Second, create a new virtual environment `demo_env` by running
+Second, create a new virtual environment `.venv` by running
 
 ```
-    python -m venv demo_env
+    python -m venv .venv
 ```
 
 on Windows and
 
 ```
-    python3 -m venv demo_env
+    python3 -m venv .venv
 ```
 
 on Linux. Next, activate it:
 
 ```
-    demo_env/Scripts/activate
+    .venv/Scripts/activate
 ```
 
 on Windows and
 
 ```
-    . demo_env/bin/activate
+    . .venv/bin/activate
 ```
 
 on Linux.

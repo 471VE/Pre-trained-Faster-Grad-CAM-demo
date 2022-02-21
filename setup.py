@@ -1,8 +1,10 @@
-from setuptools import find_packages, setup
-from glob import glob
-import os.path as osp
 import io
+import os.path as osp
 import re
+from glob import glob
+
+from setuptools import find_packages, setup
+
 
 def get_version():
     current_dir = osp.abspath(osp.dirname(__file__))
@@ -16,7 +18,11 @@ def get_dependencies():
     current_dir = osp.abspath(osp.dirname(__file__))
     requirements_file = osp.join(current_dir, "requirements.txt")
     with io.open(requirements_file, encoding="utf-8") as f:
-        dependencies = [line.strip() for line in f.readlines() if line.strip() and not line.startswith('#')]
+        dependencies = [
+            line.strip()
+            for line in f.readlines()
+            if line.strip() and not line.startswith("#")
+        ]
     return dependencies
 
 
@@ -31,22 +37,23 @@ def get_long_description():
 def get_data():
     current_dir = osp.abspath(osp.dirname(__file__))
     data = glob(current_dir + "/src/PreTrainedFasterGradCAMDemo/*/*")
-    data = ['\\'.join(elem.split('\\')[-2:]) for elem in data]
+    data = ["/".join(elem.split("/")[-2:]) for elem in data]
     return data
 
 
-setup(name="PreTrainedFasterGradCAMDemo",
-      version=get_version(),
-      author="471VE",
-      author_email="zherebiatnikov.ivan@gmail.com",
-      description="Pre-trained Faster-Grad-CAM Demo",
-      long_description=get_long_description(),
-      long_description_content_type="text/markdown",
-      url="https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo",
-      packages=find_packages('src'),
-      package_dir={'': 'src'},
-      install_requires=get_dependencies(),
-      python_requires=">=3.7,<3.10",
-      entry_points={"console_scripts": ["demo=PreTrainedFasterGradCAMDemo.demo:main"]},
-      package_data={"PreTrainedFasterGradCAMDemo": get_data()})
-
+setup(
+    name="PreTrainedFasterGradCAMDemo",
+    version=get_version(),
+    author="471VE",
+    author_email="zherebiatnikov.ivan@gmail.com",
+    description="Pre-trained Faster-Grad-CAM Demo",
+    long_description=get_long_description(),
+    long_description_content_type="text/markdown",
+    url="https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo",
+    packages=find_packages("src"),
+    package_dir={"": "src"},
+    install_requires=get_dependencies(),
+    python_requires=">=3.7,<3.10",
+    entry_points={"console_scripts": ["demo=PreTrainedFasterGradCAMDemo.demo:main"]},
+    package_data={"PreTrainedFasterGradCAMDemo": get_data()},
+)
