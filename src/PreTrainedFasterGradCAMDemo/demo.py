@@ -13,9 +13,7 @@ if os.path.exists(model_path):
     # load csv
     print("csv loading...")
     channel_weight = np.loadtxt(model_path + "channel_weight.csv", delimiter=",")
-    channel_adress = np.loadtxt(
-        model_path + "channel_adress.csv", delimiter=",", dtype="float"
-    )
+    channel_adress = np.loadtxt(model_path + "channel_adress.csv", delimiter=",", dtype="float")
     channel_adress = channel_adress.astype(int)
     vector_pa = np.loadtxt(model_path + "vector_pa.csv", delimiter=",")
     kmeans = joblib.load(model_path + "k-means.pkl.cmp")
@@ -24,9 +22,7 @@ else:
 
 path_to_images = osp.abspath(osp.dirname(__file__)) + "/hand_images/"
 if os.path.exists(path_to_images):
-    image_names = glob.glob(f"{path_to_images}*.jpg") + glob.glob(
-        f"{path_to_images}*.png"
-    )
+    image_names = glob.glob(f"{path_to_images}*.jpg") + glob.glob(f"{path_to_images}*.png")
 else:
     print("The path to the directory with the images of hands does not exist.")
 
@@ -49,16 +45,12 @@ def cosine_similarity(x1, x2):
     return cosine_sim
 
 
-def predict_faster_gradcam(
-    channel, vector, img, kmeans, channel_weight, channel_adress
-):
+def predict_faster_gradcam(channel, vector, img, kmeans, channel_weight, channel_adress):
     channel_out = channel[0]
 
     # k-means and heat_map
     cluster_no = kmeans.predict(vector)
-    cam = np.dot(
-        channel_out[:, :, channel_adress[cluster_no[0]]], channel_weight[cluster_no[0]]
-    )
+    cam = np.dot(channel_out[:, :, channel_adress[cluster_no[0]]], channel_weight[cluster_no[0]])
 
     # nomalize
     cam = cv2.resize(cam, (img.shape[1], img.shape[0]), cv2.INTER_LINEAR)
@@ -83,8 +75,7 @@ def get_x_y_limit(heatmap, thresh):
 
 
 def bounding_box(img, x_min, y_min, x_max, y_max):
-    img = cv2.rectangle(img, (x_min, y_min), (x_max, y_max), (0, 255, 0), 5)
-    return img
+    cv2.rectangle(img, (x_min, y_min), (x_max, y_max), (0, 255, 0), 5)
 
 
 def main():
@@ -124,23 +115,14 @@ def main():
                 hand = "Closed"
                 color = (255, 0, 0)
                 heatmap = predict_faster_gradcam(
-                    channel_out,
-                    test_vector,
-                    new_image,
-                    kmeans,
-                    channel_weight,
-                    channel_adress,
+                    channel_out, test_vector, new_image, kmeans, channel_weight, channel_adress
                 )
                 if like_OD:
                     x_min, y_min, x_max, y_max = get_x_y_limit(heatmap, OD_thresh)
                     bounding_box(new_image, x_min, y_min, x_max, y_max)
                 else:
-                    heatmap = cv2.applyColorMap(
-                        np.uint8(255 * heatmap), cv2.COLORMAP_JET
-                    )
-                    new_image = np.copy(
-                        cv2.addWeighted(heatmap, 0.5, new_image, 0.5, 2.2)
-                    )
+                    heatmap = cv2.applyColorMap(np.uint8(255 * heatmap), cv2.COLORMAP_JET)
+                    new_image = np.copy(cv2.addWeighted(heatmap, 0.5, new_image, 0.5, 2.2))
             else:  # hand is open
                 hand = "Open"
                 color = (0, 0, 255)

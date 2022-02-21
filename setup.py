@@ -19,9 +19,7 @@ def get_dependencies():
     requirements_file = osp.join(current_dir, "requirements.txt")
     with io.open(requirements_file, encoding="utf-8") as f:
         dependencies = [
-            line.strip()
-            for line in f.readlines()
-            if line.strip() and not line.startswith("#")
+            line.strip() for line in f.readlines() if line.strip() and not line.startswith("#")
         ]
     return dependencies
 
