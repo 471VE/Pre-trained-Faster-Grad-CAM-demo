@@ -2,9 +2,11 @@
 
 This program takes images of hands as an input and displays whether these hands are open or closed.
 
-## Preparing virtual environment
+The following tutorial explains how to install the package (<b>step 2</b>) and how to set up the project for local development (<b>step 3</b>). Fulfillment of <b>step 1</b> is required for both purposes.
 
-### Using virtualenv
+# 1. Preparing virtual environment
+
+### 1.1) Using virtualenv
 
 This section assumes that you have Python 3.7-3.9 installed since it is required by TensorFlow. Otherwise, skip this step and go to the next one.
 
@@ -46,7 +48,7 @@ on Windows and
 
 on Linux.
 
-### Using conda
+### 1.2) Using conda
 
 If you did the previous step, skip this one. This section assumes you have <b>Anaconda</b> or <b>Miniconda</b> installed.
 
@@ -57,22 +59,25 @@ Create a new virtual environment and activate it by executing following commands
 
     conda activate demo_env
 ```
+# 2. Installing the package
 
-## Installing the package from a local copy
+If you wish just to install the package and execute its script, follow the instructions below.
+
+## 2.1) Installing the package from a local copy
 
 These are the instructions on how to install the package using downloaded repository on your own machine.
 
-### Downloading the code
+### 2.1.1) Downloading the code
 
 You can either download the archive by clicking <b>Code</b>-><b>Download ZIP</b> and extract it or clone this branch using git:
 
 ```
-git clone --branch Week-1.2 https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git
+git clone --branch Week-2.1 https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git
 
 cd Pre-trained-Faster-Grad-CAM-demo
 ```
 
-### Building the package
+### 2.1.2) Building the package
 
 You do not have to build the package yourself, since it has already been built, but if you still wish to do so, follow the instructions below. If you do not want to do it, go to the next step.
 
@@ -96,26 +101,78 @@ on Windows and
 
 on Linux.
 
-### Installing the package
+### 2.1.3) Installing the package
 
 All you have left to do is actually installing the package. Do it by running
 
 ```
-    pip install dist/PreTrainedFasterGradCAMDemo-0.1.2.tar.gz
+    pip install dist/PreTrainedFasterGradCAMDemo-0.2.1.tar.gz
 ```
 
-## Installing the package directly from the repository
+## 2.2) Installing the package directly from the repository
 
 Alternatively, if you do not want to download the code, you can just execute the following command:
 
 ```
-    pip install git+https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git@Week-1.2
+    pip install git+https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git@Week-2.1
 ```
 
-## Running the script
+## 2.3) Running the script
 
-You can finally run the script. Do it by running the following command:
+You can finally run the script to check whether it was installed correctly. Do it by running the following command:
 
 ```
     demo
+```
+
+# 3. Setting up the project for local development
+
+### 3.1) Downloading the code
+
+You can either download the archive by clicking <b>Code</b>-><b>Download ZIP</b> and extract it or clone this branch using git:
+
+```
+git clone --branch Week-2.1 https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git
+
+cd Pre-trained-Faster-Grad-CAM-demo
+```
+
+### 3.2) Installing dependencies
+
+Install project dependencies:
+```
+    pip install -r requirements.txt
+```
+
+### 3.2) Installing ```pre-commit```
+
+Install ```pre-commit``` module onto your machine by running:
+
+```
+    pip install pre-commit
+```
+
+### 3.3) Configure files (optional)
+
+All of the files are already configured, but if you wish to change some of them, here is where settings are located for different checking tools:
+
+- ".pre-commit-config.yaml" for ```pre-commit```;
+- "pyproject.toml" for ```black``` and ```isort```;
+- "setup.cfg" for ```flake8```.
+
+### 3.4) Install git hooks
+
+Install git hooks into your git hooks folder:
+```
+    pre-commit install
+```
+
+### 3.5) Running checks
+
+Styling checks are now run automatically every time you try to commit your code. If all of the tests are successfully passed, commit process will proceed as usual. However, if some of the tests are failed, commit will not be finished. Stylistic errors will either be corrected automatically (i.e. in case of ```black```) or must be manually corrected (i.e. in case of ```flake8```). Be aware that you will have to stage changes again after failing a test.
+
+If you want to style check your code without commiting, run
+
+```
+    pre-commit run -a
 ```

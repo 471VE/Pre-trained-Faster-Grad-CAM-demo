@@ -35,7 +35,7 @@ def get_long_description():
 def get_data():
     current_dir = osp.abspath(osp.dirname(__file__))
     data = glob(current_dir + "/src/PreTrainedFasterGradCAMDemo/*/*")
-    data = ["/".join(elem.split("/")[-2:]) for elem in data]
+    data = ["/".join(elem.replace("\\", "/").split("/")[-2:]) for elem in data]
     return data
 
 
