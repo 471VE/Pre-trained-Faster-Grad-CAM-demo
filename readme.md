@@ -72,9 +72,9 @@ These are the instructions on how to install the package using downloaded reposi
 You can either download the archive by clicking <b>Code</b>-><b>Download ZIP</b> and extract it or clone this branch using git:
 
 ```
-git clone --branch Week-2.1 https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git
+    git clone --branch Week-2.1 https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git
 
-cd Pre-trained-Faster-Grad-CAM-demo
+    cd Pre-trained-Faster-Grad-CAM-demo
 ```
 
 ### 2.1.2) Building the package
@@ -132,9 +132,9 @@ You can finally run the script to check whether it was installed correctly. Do i
 You can either download the archive by clicking <b>Code</b>-><b>Download ZIP</b> and extract it or clone this branch using git:
 
 ```
-git clone --branch Week-2.1 https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git
+    git clone --branch Week-2.1 https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git
 
-cd Pre-trained-Faster-Grad-CAM-demo
+    cd Pre-trained-Faster-Grad-CAM-demo
 ```
 
 ### 3.2) Installing dependencies
@@ -175,4 +175,23 @@ If you want to style check your code without commiting, run
 
 ```
     pre-commit run -a
+```
+
+### 3.7) Running checks separately
+
+Alternatively, you may choose to install the checking tools manually and run them separately when needed. Installation:
+```
+    pip install black
+
+    pip install isort
+
+    pip install flake8
+```
+Then you can run checks by executing the following commands:
+```
+    black .
+
+    isort .
+
+    flake8 .
 ```
