@@ -144,7 +144,7 @@ Install project dependencies:
     pip install -r requirements.txt
 ```
 
-### 3.2) Installing ```pre-commit```
+### 3.3) Installing ```pre-commit```
 
 Install ```pre-commit``` module onto your machine by running:
 
@@ -152,7 +152,7 @@ Install ```pre-commit``` module onto your machine by running:
     pip install pre-commit
 ```
 
-### 3.3) Configure files (optional)
+### 3.4) Configure files (optional)
 
 All of the files are already configured, but if you wish to change some of them, here is where settings are located for different checking tools:
 
@@ -160,14 +160,14 @@ All of the files are already configured, but if you wish to change some of them,
 - "pyproject.toml" for ```black``` and ```isort```;
 - "setup.cfg" for ```flake8```.
 
-### 3.4) Install git hooks
+### 3.5) Install git hooks
 
 Install git hooks into your git hooks folder:
 ```
     pre-commit install
 ```
 
-### 3.5) Running checks
+### 3.6) Running checks
 
 Styling checks are now run automatically every time you try to commit your code. If all of the tests are successfully passed, commit process will proceed as usual. However, if some of the tests are failed, commit will not be finished. Stylistic errors will either be corrected automatically (i.e. in case of ```black```) or must be manually corrected (i.e. in case of ```flake8```). Be aware that you will have to stage changes again after failing a test.
 
