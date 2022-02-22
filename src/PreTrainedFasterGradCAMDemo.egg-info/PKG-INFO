@@ -209,5 +209,6 @@ Then you can run checks by executing the following commands:
 # 4. Testing and making CI pipeline
 
 ![Tests](https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo/actions/workflows/tests.yml/badge.svg)
+![Build](https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo/actions/workflows/build.yml/badge.svg)
 
 
