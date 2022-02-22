@@ -193,3 +193,5 @@ Then you can run checks by executing the following commands:
 ```
 
 # 4. Testing and making CI pipeline
+
+![Tests](https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo/tree/Week-2.2/actions/workflows/tests.yml/badge.svg)
