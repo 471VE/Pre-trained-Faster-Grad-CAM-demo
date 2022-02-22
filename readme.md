@@ -181,11 +181,7 @@ If you want to style check your code without commiting, run
 
 Alternatively, you may choose to install the checking tools manually and run them separately when needed. Installation:
 ```
-    pip install black
-
-    pip install isort
-
-    pip install flake8
+    pip install -r requirements_dev.txt
 ```
 Then you can run checks by executing the following commands:
 ```
@@ -195,3 +191,5 @@ Then you can run checks by executing the following commands:
 
     flake8 .
 ```
+
+# 4. Testing and making CI pipeline

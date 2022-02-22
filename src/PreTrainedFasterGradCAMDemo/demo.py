@@ -18,7 +18,7 @@ if os.path.exists(model_path):
     vector_pa = np.loadtxt(model_path + "vector_pa.csv", delimiter=",")
     kmeans = joblib.load(model_path + "k-means.pkl.cmp")
 else:
-    print("The path to the model weights does not exist.")
+    raise Exception("The path to the model weights does not exist.")
 
 path_to_images = osp.abspath(osp.dirname(__file__)) + "/hand_images/"
 if os.path.exists(path_to_images):
@@ -78,7 +78,7 @@ def bounding_box(img, x_min, y_min, x_max, y_max):
     cv2.rectangle(img, (x_min, y_min), (x_max, y_max), (0, 255, 0), 5)
 
 
-def main():
+def main(image_names=image_names, show_image=True):
     input_size = 96
     hand_thresh = 0.25
     OD_thresh = 0.8
@@ -95,6 +95,8 @@ def main():
     interpreter.allocate_tensors()
     input_details = interpreter.get_input_details()
     output_details = interpreter.get_output_details()
+
+    hand_positions = []
 
     for image_name in image_names:
         image = cv2.imread(image_name)
@@ -159,21 +161,29 @@ def main():
                 cv2.LINE_AA,
             )
             # display the image
-            cv2.imshow("Result", new_image)
+            return hand, new_image
 
-        # quit or change mode
-        while True:
-            show_info()
-            key = cv2.waitKey(10) & 0xFF
-            if key == ord("q"):
-                break
-            elif key == ord("s"):
-                if like_OD:
-                    like_OD = False
-                else:
-                    like_OD = True
+        if show_image:
+            # quit or change mode
+            while True:
+                hand, image_to_show = show_info()
+                cv2.imshow("Result", image_to_show)
+                key = cv2.waitKey(10) & 0xFF
+                if key == ord("q"):
+                    hand_positions.append(hand)
+                    break
+                elif key == ord("s"):
+                    if like_OD:
+                        like_OD = False
+                    else:
+                        like_OD = True
 
-        cv2.destroyAllWindows()
+            cv2.destroyAllWindows()
+        else:
+            hand, _ = show_info()
+            hand_positions.append(hand)
+
+    return hand_positions
 
 
 if __name__ == "__main__":
