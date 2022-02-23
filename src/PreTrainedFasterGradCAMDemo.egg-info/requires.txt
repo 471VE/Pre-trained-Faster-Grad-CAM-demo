@@ -4,3 +4,11 @@ numpy==1.21.2
 opencv_contrib_python==4.5.4.58
 scikit-learn==0.22
 tensorflow==2.8.0
+
+[testing]
+black
+isort
+pytest>=6.0
+pytest-cov>=2.0
+flake8>=3.9
+tox>=3.24
