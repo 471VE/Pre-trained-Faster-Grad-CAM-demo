@@ -205,4 +205,4 @@ To prevent a branch from being merged to ```master``` with failed tests, go to y
 
 Now you cannot accept pull request without tests passing.
 
-![Tests & Build](https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo/actions/workflows/tests.yml/badge.svg)
+![Tests & Build](https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo/actions/workflows/tests_push.yml/badge.svg)
