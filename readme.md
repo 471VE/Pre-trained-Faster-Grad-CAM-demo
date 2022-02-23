@@ -55,9 +55,9 @@ If you did the previous step, skip this one. This section assumes you have <b>An
 Create a new virtual environment and activate it by executing following commands:
 
 ```
-    conda create -n demo_env python=3.9.6
+    conda create -n .venv python=3.9.6
 
-    conda activate demo_env
+    conda activate .venv
 ```
 # 2. Installing the package
 
