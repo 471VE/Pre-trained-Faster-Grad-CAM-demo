@@ -97,6 +97,7 @@ def main(image_names=image_names, show_image=True):
     output_details = interpreter.get_output_details()
 
     hand_positions = []
+    processed_images = []
 
     for image_name in image_names:
         image = cv2.imread(image_name)
@@ -171,6 +172,7 @@ def main(image_names=image_names, show_image=True):
                 key = cv2.waitKey(10) & 0xFF
                 if key == ord("q"):
                     hand_positions.append(hand)
+                    processed_images.append(image_to_show)
                     break
                 elif key == ord("s"):
                     if like_OD:
@@ -180,10 +182,11 @@ def main(image_names=image_names, show_image=True):
 
             cv2.destroyAllWindows()
         else:
-            hand, _ = show_info()
+            hand, image_to_show = show_info()
             hand_positions.append(hand)
+            processed_images.append(image_to_show)
 
-    return hand_positions
+    return hand_positions, processed_images
 
 
 if __name__ == "__main__":

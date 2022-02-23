@@ -1,5 +1,6 @@
 import os.path as osp
 
+import numpy as np
 import pytest
 
 from PreTrainedFasterGradCAMDemo import demo
@@ -16,15 +17,19 @@ def test_regression():
     for image in prepare_image_names(
         ["fist.jpg", "open_palm.jpg", "large_image.jpg", "small_image.jpg"]
     ):
-        first_result = demo.main([image], show_image=False)
-        second_result = demo.main([image], show_image=False)
-        assert first_result == second_result
+        first_result, first_image = demo.main([image], show_image=False)
+        second_result, second_image = demo.main([image], show_image=False)
+        first_image, second_image = (image[0] for image in (first_image, second_image))
+        # To reverse the channels of the second image, uncomment the line below:
+        # second_image = second_image[:,:,::-1]
+        print(type(first_image))
+        assert np.array_equal(first_image, second_image) & (first_result == second_result)
 
 
 # Test for whether the processing of hand-picked images returns the true result
 def test_correctness_of_results():
     true_positions = ["Closed", "Open"]
-    predicted_positions = demo.main(
+    predicted_positions, _ = demo.main(
         prepare_image_names(["fist.jpg", "open_palm.jpg"]), show_image=False
     )
     assert true_positions == predicted_positions

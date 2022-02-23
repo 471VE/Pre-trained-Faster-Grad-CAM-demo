@@ -206,6 +206,8 @@ All you have left to do is run the tests. Do it by running:
 ```
     pytest
 ```
+All of the tests are located in ```tests/test_demo.py``` in case you want to take a look at them or even change them.
+
 ## CI pipeline
 CI has already been set up. It will run the tests and style checks and will build a new version of package every time you push a new commit or create a pull request. Do not forget to pull the repository after a package is successfully built since it will differ from the one you commited.
 

@@ -192,9 +192,9 @@ All you have left to do is run the tests. Do it by running:
 ```
     pytest
 ```
-All of the tests are located in ```tests/test_demo.py``` in case you want to take a look at them or even change them.
+All of the tests are located in ```tests/test_demo.py``` in case you want to take a look at them or even change them. To break regression test, you can uncomment the specified line in the definition of ```test_regression()``` function.
 
 ## CI pipeline
-CI has already been set up. It will run the tests and style checks and will build a new version of package every time you push a new commit or create a pull request. Do not forget to pull the repository after a package is successfully built since it will differ from the one you commited.
+CI has already been set up. It will run the tests and style checks and will build a new version of package every time you push a new commit on any branch or make a pull request. Do not forget to pull the repository after a package is successfully built since it will differ from the one you commited.
 
 ![Tests & Build](https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo/actions/workflows/tests.yml/badge.svg)
