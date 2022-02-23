@@ -21,7 +21,7 @@ def test_regression():
         second_result, second_image = demo.main([image], show_image=False)
         first_image, second_image = (image[0] for image in (first_image, second_image))
         # To reverse the channels of the second image, uncomment the line below:
-        # second_image = second_image[:,:,::-1]
+        second_image = second_image[:, :, ::-1]
         print(type(first_image))
         assert np.array_equal(first_image, second_image) & (first_result == second_result)
 
