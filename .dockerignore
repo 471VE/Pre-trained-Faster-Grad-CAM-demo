@@ -1,0 +1,17 @@
+**/*cache*
+**/.classpath
+**/.dockerignore
+**/.venv
+**/.git
+**/.github
+**/.gitignore
+**/charts
+**/Dockerfile*
+**/tests
+**/readme_illustrations
+**/requirements*.txt
+**/setup.*
+LICENSE
+readme.md
+.coverage
+.pre-commit-config.yaml

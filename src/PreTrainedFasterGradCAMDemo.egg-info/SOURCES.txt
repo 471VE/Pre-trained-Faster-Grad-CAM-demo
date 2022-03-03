@@ -5,6 +5,7 @@ requirements.txt
 setup.cfg
 setup.py
 src/PreTrainedFasterGradCAMDemo/__init__.py
+src/PreTrainedFasterGradCAMDemo/app.py
 src/PreTrainedFasterGradCAMDemo/demo.py
 src/PreTrainedFasterGradCAMDemo.egg-info/PKG-INFO
 src/PreTrainedFasterGradCAMDemo.egg-info/SOURCES.txt
