@@ -6,6 +6,8 @@ RUN apt-get update
 RUN apt-get install -y --no-install-recommends build-essential \
     python3.8 python3-pip python3.8-venv python3.8-dev
 RUN apt-get install -y --fix-missing ffmpeg libsm6 libxext6
+RUN rm -rf /var/cache/apt/archives \
+    && rm -rf /var/lib/apt/lists
 
 RUN python3 -m pip install --upgrade pip
 
