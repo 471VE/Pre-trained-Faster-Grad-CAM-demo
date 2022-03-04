@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: PreTrainedFasterGradCAMDemo
-Version: 0.2.2
+Version: 0.3.1
 Summary: Pre-trained Faster-Grad-CAM Demo
 Home-page: https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo
 Author: 471VE
@@ -14,9 +14,15 @@ License-File: LICENSE
 
 # Pre-trained Faster-Grad-CAM Demo
 
-This program takes images of hands as an input and displays whether these hands are open or closed.
+This repository is my attempt to create from a piece of research code a package and a working demo, as well as to set up Continuous Integration for this project.
 
-The following tutorial explains how to install the package (<b>step 2</b>) and how to set up the project for local development (<b>step 3</b>). Fulfillment of <b>step 1</b> is required for both purposes.
+The program itself takes images of hands as an input and displays whether these hands are open or closed. It also produces a heatmap of important regions on an image that contribute the most to the final prediction of the model using Grad-CAM approach in case of a closed hand. Go to
+```
+https://github.com/shinmura0/Faster-Grad-CAM
+```
+for the original model.
+
+The following tutorial explains how to install the package (<b>step 2</b>) and how to set up the project for local development (<b>step 3</b>). Fulfillment of <b>step 1</b> is required for both purposes. If you want a working web demo, go to <b>step 4</b>.
 
 # 1. Preparing virtual environment
 
@@ -33,7 +39,7 @@ First, install <b>virtualenv</b> by running
 If you have Debian/Ubuntu system, you will also have to install python3-venv by:
 
 ```
-    sudo apt install python3.9-venv
+    sudo apt install python3.8-venv
 ```
 
 Second, create a new virtual environment `.venv` by running
@@ -69,7 +75,7 @@ If you did the previous step, skip this one. This section assumes you have <b>An
 Create a new virtual environment and activate it by executing following commands:
 
 ```
-    conda create -n .venv python=3.9.6
+    conda create -n .venv python=3.8
 
     conda activate .venv
 ```
@@ -86,7 +92,7 @@ These are the instructions on how to install the package using downloaded reposi
 You can either download the archive by clicking <b>Code</b>-><b>Download ZIP</b> and extract it or clone this branch using git:
 
 ```
-    git clone --branch Week-2.2 https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git
+    git clone --branch Week-3 https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git
 
     cd Pre-trained-Faster-Grad-CAM-demo
 ```
@@ -120,7 +126,7 @@ on Linux.
 All you have left to do is actually installing the package. Do it by running
 
 ```
-    pip install dist/PreTrainedFasterGradCAMDemo-0.2.2.tar.gz
+    pip install dist/PreTrainedFasterGradCAMDemo-0.3.1.tar.gz
 ```
 
 ## 2.2) Installing the package directly from the repository
@@ -128,7 +134,7 @@ All you have left to do is actually installing the package. Do it by running
 Alternatively, if you do not want to download the code, you can just execute the following command:
 
 ```
-    pip install git+https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git@Week-2.2
+    pip install git+https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git@Week-3
 ```
 
 ## 2.3) Running the script
@@ -146,7 +152,7 @@ You can finally run the script to check whether it was installed correctly. Do i
 You can either download the archive by clicking <b>Code</b>-><b>Download ZIP</b> and extract it or clone this branch using git:
 
 ```
-    git clone --branch Week-2.2 https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git
+    git clone --branch Week-3 https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git
 
     cd Pre-trained-Faster-Grad-CAM-demo
 ```
@@ -218,6 +224,51 @@ To prevent a branch from being merged to ```master``` with failed tests, go to y
 ![](./readme_illustrations/branch_rule_2.jpg)
 
 Now you cannot accept pull request without tests passing.
+
+
+# 4. Web Demo
+
+## 4.1) Without setting up the project locally
+
+For this to work, you must have <b>Docker</b> installed and running. Execute the following command:
+```
+    docker run -p 8501:8501 ghcr.io/471ve/pre-trained-faster-grad-cam-demo:week-3
+```
+
+You will have to wait for quite some time. When you see in the terminal that it says <i>"You can now view your Streamlit app in your browser"</i>, go to
+```
+    http://localhost:8501/
+```
+in your browser.
+
+## 4.2) With setting up the project locally
+
+If you completed <b>step 3</b>, all you have left to do is open the streamlit app by
+```
+    streamlit run src/PreTrainedFasterGradCAMDemo/app.py
+```
+The web page with demo should open automatically. In case it doesn't happen, go to
+```
+    http://localhost:8501/
+```
+in your browser of choice.
+
+### 4.2.1) Building the Docker image
+You may also build the docker image yourself. For this you also must have <b>Docker</b> installed and running. Run this command in the terminal:
+```
+    docker build -t web_demo .
+```
+Now you can run the docker image by
+```
+    docker run -p 8501:8501 web_demo
+```
+When you see in the terminal that it says <i>"You can now view your Streamlit app in your browser"</i>, go to
+```
+    http://localhost:8501/
+```
+in your browser.
+
+The web demo is now working. Upload an image with a human hand in it, and the app will output whether this hand is open or closed. In case of a closed hand, it will also show a heatmap of the regions of the image that contributed the most in determining that the hand is closed.
 
 ![Tests & Build](https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo/actions/workflows/tests_push.yml/badge.svg)
 

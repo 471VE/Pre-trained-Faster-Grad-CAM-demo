@@ -1,6 +1,6 @@
 black
 flake8==3.9.2
 isort
-pre_commit
+pre-commit
 pytest==6.2.5
 pytest-cov==2.12.1

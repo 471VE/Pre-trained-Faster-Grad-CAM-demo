@@ -78,7 +78,11 @@ def bounding_box(img, x_min, y_min, x_max, y_max):
     cv2.rectangle(img, (x_min, y_min), (x_max, y_max), (0, 255, 0), 5)
 
 
-def main(image_names=image_names, show_image=True):
+def load_images(image_names):
+    return [cv2.imread(image_name) for image_name in image_names]
+
+
+def main(images=load_images(image_names), show_image=True):
     input_size = 96
     hand_thresh = 0.25
     OD_thresh = 0.8
@@ -99,8 +103,7 @@ def main(image_names=image_names, show_image=True):
     hand_positions = []
     processed_images = []
 
-    for image_name in image_names:
-        image = cv2.imread(image_name)
+    for image in images:
         img = cv2.resize(image, (input_size, input_size))
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         img = img / 255
@@ -112,7 +115,7 @@ def main(image_names=image_names, show_image=True):
         test_vector = interpreter.get_tensor(output_details[1]["index"])
         score = get_score_arc(vector_pa, test_vector)
 
-        def show_info():
+        def show_info(show_image):
             new_image = image.copy()
             if score < hand_thresh:  # hand is closed
                 hand = "Closed"
@@ -131,36 +134,48 @@ def main(image_names=image_names, show_image=True):
                 color = (0, 0, 255)
 
             # message
-            cv2.putText(
-                new_image,
-                f"{hand}, score: {score:.1f}",
-                (15, 80),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                1,
-                color,
-                1,
-                cv2.LINE_AA,
-            )
-            cv2.putText(
-                new_image,
-                message1,
-                (15, 25),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.5,
-                (0, 0, 0),
-                1,
-                cv2.LINE_AA,
-            )
-            cv2.putText(
-                new_image,
-                message2,
-                (15, 45),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.5,
-                (0, 0, 0),
-                1,
-                cv2.LINE_AA,
-            )
+            if show_image:
+                cv2.putText(
+                    new_image,
+                    f"{hand}, score: {score:.1f}",
+                    (15, 80),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    1,
+                    color,
+                    1,
+                    cv2.LINE_AA,
+                )
+                cv2.putText(
+                    new_image,
+                    message1,
+                    (15, 25),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.5,
+                    (0, 0, 0),
+                    1,
+                    cv2.LINE_AA,
+                )
+                cv2.putText(
+                    new_image,
+                    message2,
+                    (15, 45),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.5,
+                    (0, 0, 0),
+                    1,
+                    cv2.LINE_AA,
+                )
+            else:
+                cv2.putText(
+                    new_image,
+                    f"{hand}, score: {score:.1f}",
+                    (15, 35),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    1,
+                    color,
+                    1,
+                    cv2.LINE_AA,
+                )
             # display the image
             return hand, new_image
 
@@ -182,9 +197,11 @@ def main(image_names=image_names, show_image=True):
 
             cv2.destroyAllWindows()
         else:
-            hand, image_to_show = show_info()
+            hand, first_image_to_show = show_info(show_image)
+            like_OD = not like_OD
+            _, second_image_to_show = show_info(show_image)
             hand_positions.append(hand)
-            processed_images.append(image_to_show)
+            processed_images.append((first_image_to_show, second_image_to_show))
 
     return hand_positions, processed_images
 
