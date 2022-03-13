@@ -1,6 +1,6 @@
 # Pre-trained Faster-Grad-CAM Demo
 
-This repository is my attempt to create from a piece of research code a package and a working demo, as well as to set up Continuous Integration for this project.
+This repository is my attempt to create a package and a working demo from a piece of research code, as well as to set up Continuous Integration for this project.
 
 The program itself takes images of hands as an input and displays whether these hands are open or closed. It also produces a heatmap of important regions on an image that contribute the most to the final prediction of the model using Grad-CAM approach in case of a closed hand. Go to
 ```
