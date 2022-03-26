@@ -6,9 +6,14 @@ The program itself takes images of hands as an input and displays whether these 
 ```
 https://github.com/shinmura0/Faster-Grad-CAM
 ```
-for the original model.
+for the original model. Tuned weights were taken from
+```
+https://github.com/PINTO0309/PINTO_model_zoo/tree/main/015_Faster-Grad-CAM
+```
 
 The following tutorial explains how to install the package (<b>step 2</b>) and how to set up the project for local development (<b>step 3</b>). Fulfillment of <b>step 1</b> is required for both purposes. If you want a working web demo, go to <b>step 4</b>.
+
+You can see the progress of my work by choosing different branches of this repository.
 
 # 1. Preparing virtual environment
 
@@ -78,7 +83,7 @@ These are the instructions on how to install the package using downloaded reposi
 You can either download the archive by clicking <b>Code</b>-><b>Download ZIP</b> and extract it or clone this branch using git:
 
 ```
-    git clone --branch Week-3 https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git
+    git clone --branch Week-4 https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git
 
     cd Pre-trained-Faster-Grad-CAM-demo
 ```
@@ -112,7 +117,7 @@ on Linux.
 All you have left to do is actually installing the package. Do it by running
 
 ```
-    pip install dist/PreTrainedFasterGradCAMDemo-0.3.1.tar.gz
+    pip install dist/PreTrainedFasterGradCAMDemo-0.4.tar.gz
 ```
 
 ## 2.2) Installing the package directly from the repository
@@ -120,7 +125,7 @@ All you have left to do is actually installing the package. Do it by running
 Alternatively, if you do not want to download the code, you can just execute the following command:
 
 ```
-    pip install git+https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git@Week-3
+    pip install git+https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git@Week-4
 ```
 
 ## 2.3) Running the script
@@ -138,7 +143,7 @@ You can finally run the script to check whether it was installed correctly. Do i
 You can either download the archive by clicking <b>Code</b>-><b>Download ZIP</b> and extract it or clone this branch using git:
 
 ```
-    git clone --branch Week-3 https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git
+    git clone --branch Week-4 https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo.git
 
     cd Pre-trained-Faster-Grad-CAM-demo
 ```
@@ -218,7 +223,7 @@ Now you cannot accept pull request without tests passing.
 
 For this to work, you must have <b>Docker</b> installed and running. Execute the following command:
 ```
-    docker run -p 8501:8501 ghcr.io/471ve/pre-trained-faster-grad-cam-demo:week-3
+    docker run -p 8501:8501 ghcr.io/471ve/pre-trained-faster-grad-cam-demo:week-4
 ```
 
 You will have to wait for quite some time. When you see in the terminal that it says <i>"You can now view your Streamlit app in your browser"</i>, go to
@@ -237,7 +242,7 @@ The web page with demo should open automatically. In case it doesn't happen, go 
 ```
     http://localhost:8501/
 ```
-in your browser of choice.
+in the browser of your choice.
 
 ### 4.2.1) Building the Docker image
 You may also build the docker image yourself. For this you also must have <b>Docker</b> installed and running. Run this command in the terminal:
@@ -254,6 +259,6 @@ When you see in the terminal that it says <i>"You can now view your Streamlit ap
 ```
 in your browser.
 
-The web demo is now working. Upload an image with a human hand in it, and the app will output whether this hand is open or closed. In case of a closed hand, it will also show a heatmap of the regions of the image that contributed the most in determining that the hand is closed.
+The web demo should now be working. Upload an image with a human hand in it, and the app will output whether this hand is open or closed. In case of a closed hand, it will also show a heatmap of the regions of the image that contributed the most in determining that the hand is closed.
 
 ![Tests & Build](https://github.com/471VE/Pre-trained-Faster-Grad-CAM-demo/actions/workflows/tests_push.yml/badge.svg)

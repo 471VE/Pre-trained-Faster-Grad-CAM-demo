@@ -12,8 +12,10 @@ st.write(
     "It also produces a heatmap of important regions "
     "on an image that contribute the most to the "
     "final prediction of the model using Grad-CAM approach.\n\n"
-    "Pre-trained model was taken from here: "
-    "https://github.com/shinmura0/Faster-Grad-CAM"
+    "Original model can be found here: "
+    "https://github.com/shinmura0/Faster-Grad-CAM\n\n"
+    "Model weights were taken from here: "
+    "https://github.com/PINTO0309/PINTO_model_zoo/tree/main/015_Faster-Grad-CAM"
 )
 
 uploaded_file = st.file_uploader("Upload your image of the hand here", type=["png", "jpg", "jpeg"])
